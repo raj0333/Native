@@ -34,7 +34,7 @@ const HomeScreen = ({ navigation }) => {
       </View>
 
       {/* Map Section */}
-      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Map')}>
+      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('DriverRoute')}>
         <Image
           source={{ uri: 'https://img.icons8.com/color/96/map.png' }}
           style={styles.icon}
@@ -44,7 +44,7 @@ const HomeScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       {/* Delivery Reports */}
-      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Reports')}>
+      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('DriverReport')}>
         <Image
           source={{ uri: 'https://img.icons8.com/color/96/report-card.png' }}
           style={styles.icon}
@@ -60,6 +60,16 @@ const HomeScreen = ({ navigation }) => {
           style={styles.icon}
         />
         <Text style={styles.cardTitle}>Upload Vehicle Photos</Text>
+        <Text style={styles.cardDesc}>Upload vehicle & documents</Text>
+      </TouchableOpacity>
+
+      {/* Upload Documents */}
+      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('UploadPhotos')}>
+        <Image
+          source={{ uri: 'https://img.icons8.com/color/96/document.png' }}
+          style={styles.icon}
+        />
+        <Text style={styles.cardTitle}>Upload Documents</Text>
         <Text style={styles.cardDesc}>Upload vehicle & documents</Text>
       </TouchableOpacity>
 

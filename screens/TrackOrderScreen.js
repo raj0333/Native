@@ -197,7 +197,7 @@ const TrackOrderScreen = () => {
       </View>
 
       {/* Next Button */}
-      <TouchableOpacity style={styles.nextButton}>
+      <TouchableOpacity style={styles.nextButton} onPress={() => navigation.navigate('Invoice')}>
         <Text style={styles.nextButtonText}>Next</Text>
       </TouchableOpacity>
 
@@ -213,8 +213,6 @@ const styles = StyleSheet.create({
   header: {
     padding: 20,
     backgroundColor: '#2E86DE',
-    borderBottomLeftRadius: 25,
-    borderBottomRightRadius: 25,
   },
   headerTitle: {
     color: '#fff',
@@ -315,11 +313,13 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     tintColor: '#fff',
+    top: 3
   },
   icon: {
     width: 20,
     height: 20,
     marginRight: 10,
+    
   },
   text: {
     fontSize: 14,

@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   button: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#27ae60',
     padding: 14,
     borderRadius: 10,
     marginTop: 20,
@@ -124,5 +124,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     fontWeight: 'bold',
+    fontSize: 18,
   },
 });

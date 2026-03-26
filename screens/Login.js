@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
 View,
 Text,
@@ -26,16 +27,33 @@ const [password,setPassword] = useState("");
 // Alert.alert("Success",`Logged in as ${role}`);
 // };
 
-const handleLogin = () => {
+const handleLogin = async () => {
 if (email === "" || password === "") {
 Alert.alert("Validation", "Please enter email and password");
 return;
 }
 
+try {
+// Fetch registered users
+const existingUsers = await AsyncStorage.getItem("users");
+const users = existingUsers ? JSON.parse(existingUsers) : [];
+
+// Check if user exists with matching email, password, and role
+const user = users.find(u => u.email === email && u.password === password && u.role === role);
+
+if (!user) {
+Alert.alert("Error", "Invalid credentials or user not registered for this role");
+return;
+}
+
+// Successful login
 if (role === "customer") {
 navigation.navigate("CustomerScreen");
 } else {
 navigation.navigate("Driver");
+}
+} catch (error) {
+Alert.alert("Error", "Something went wrong during login");
 }
 };
 
@@ -186,8 +204,8 @@ alignItems:"center",
 },
 
 activeRole:{
-backgroundColor:"#2f80ed",
-borderColor:"#2f80ed",
+backgroundColor:"#27ae60",
+borderColor:"#27ae60",
 
 },
 
@@ -210,7 +228,7 @@ backgroundColor:"#fff"
 },
 
 loginBtn:{
-backgroundColor:"#2f80ed",
+backgroundColor:"#27ae60",
 padding:15,
 borderRadius:8,
 marginBottom:15

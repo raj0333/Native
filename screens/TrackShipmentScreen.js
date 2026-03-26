@@ -13,9 +13,9 @@ const TrackShipment = () => {
     <RNView style={styles.container}>
       
       {/* Header */}
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <Text style={styles.headerTitle}>Track Shipment</Text>
-      </View>
+      </View> */}
 
       {/* Truck Section */}
       <View style={styles.truckContainer}>
@@ -24,7 +24,7 @@ const TrackShipment = () => {
         {/* Tires */}
         <View style={styles.tireRow}>
           <Image source={require('../assets/tire01.png')} style={styles.tireImg} />
-          <Image source={require('../assets/tire01.png')} style={styles.tireImg} />
+          {/* <Image source={require('../assets/tire01.png')} style={styles.tireImg} /> */}
         </View>
       </View>
 
@@ -179,7 +179,7 @@ tireImg: {
     width: 14,
     height: 14,
     borderRadius: 7,
-    backgroundColor: '#1e88e5',
+    backgroundColor: '#2e7d32',
   },
 
   circle: {
@@ -202,7 +202,7 @@ tireImg: {
   },
 
   button: {
-    backgroundColor: '#1e88e5',
+    backgroundColor: '#2e7d32',
     margin: 20,
     padding: 15,
     borderRadius: 25,
@@ -212,5 +212,6 @@ tireImg: {
   buttonText: {
     color: '#fff',
     fontWeight: 'bold',
+    fontSize: 18,
   },
 });

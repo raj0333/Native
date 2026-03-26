@@ -209,8 +209,8 @@ alignItems:"center",
 },
 
 activeRole:{
-backgroundColor:"#2f80ed",
-borderColor:"#2f80ed",
+backgroundColor:"#27ae60",
+borderColor:"#27ae60",
 },
 
 roleText:{
@@ -232,7 +232,7 @@ backgroundColor:"#fff"
 },
 
 signupBtn:{
-backgroundColor:"#2f80ed",
+backgroundColor:"#27ae60",
 padding:15,
 borderRadius:8,
 marginBottom:15

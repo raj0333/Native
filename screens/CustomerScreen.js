@@ -104,7 +104,12 @@ onChangeText={setSearchText}
 </View>
 
 {/* Order List */}
-<Text style={styles.subTitle}>Recent Orders</Text>
+<View style={styles.orderListHeader}>
+  <Text style={styles.subTitle}>Recent Orders</Text>
+<TouchableOpacity style={styles.addServiceBtn} onPress={() => navigation.navigate("Service")}>
+    <Text style={styles.addServiceText}>➕ Add Service</Text>
+  </TouchableOpacity>
+</View>
 
 <FlatList
 data={filteredOrders}
@@ -126,6 +131,11 @@ style={styles.demoVehicleIcon}
 </View>
 )}
 />
+
+{/* Customer Quote Button */}
+<TouchableOpacity style={styles.quoteBtn} onPress={() => navigation.navigate("Quote")}>
+  <Text style={styles.quoteText}>Customer Quote</Text>
+</TouchableOpacity>
 
 {/* Logout Button */}
 <TouchableOpacity style={styles.logoutBtn} onPress={handleLogout}>
@@ -169,7 +179,7 @@ marginVertical: 15,
 
 card: {
 flex: 1,
-backgroundColor: "#2f80ed",
+backgroundColor: "#27ae60",
 padding: 15,
 marginHorizontal: 5,
 borderRadius: 10,
@@ -235,6 +245,25 @@ fontWeight: "bold",
 fontSize: 16,
 },
 
+// Customer Quote Button Styles
+quoteBtn: {
+backgroundColor: "#27ae60", // Green color
+padding: 15,
+borderRadius: 8,
+marginTop: 15,
+alignItems: "center",
+elevation: 3,
+shadowColor: "#000",
+shadowOffset: { width: 0, height: 2 },
+shadowOpacity: 0.25,
+shadowRadius: 3.84,
+},
+quoteText: {
+color: "#fff",
+fontWeight: "bold",
+fontSize: 16,
+},
+
 
 // Filter Tabs Styles
 filterTabsContainer: {
@@ -250,11 +279,11 @@ filterTab: {
 flex: 1,
 paddingVertical: 10,
 alignItems: "center",
-borderRadius: 8,
+borderRadius: 4,
 marginHorizontal: 2,
 },
 filterTabActive: {
-backgroundColor: "#2f80ed",
+backgroundColor: "#27ae60",
 },
 filterTabText: {
 fontSize: 14,
@@ -280,6 +309,34 @@ searchInput: {
 flex: 1,
 height: 45,
 fontSize: 16,
+},
+
+// Order List Header Styles
+orderListHeader: {
+flexDirection: "row",
+justifyContent: "space-between",
+alignItems: "center",
+marginBottom: 10,
+paddingVertical: 5,
+},
+
+// Add Service Button Styles
+addServiceBtn: {
+backgroundColor: "#27ae60", // Green color to match the theme
+paddingVertical: 6,
+paddingHorizontal: 12,
+borderRadius: 20,
+alignSelf: "flex-end",
+elevation: 2,
+shadowColor: "#000",
+shadowOffset: { width: 0, height: 1 },
+shadowOpacity: 0.22,
+shadowRadius: 2.22,
+},
+addServiceText: {
+color: "#fff",
+fontWeight: "600",
+fontSize: 14,
 },
 
 });

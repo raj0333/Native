@@ -36,7 +36,7 @@ const ShipmentSuccessScreen = ({ navigation, route }) => {
 
         {/* Tires (clipart style) */}
         <View style={styles.tireRow}>
-          <Image source={require('../assets/tire01.png')} style={styles.tireImg} />
+          {/* <Image source={require('../assets/tire01.png')} style={styles.tireImg} /> */}
           <Image source={require('../assets/tire01.png')} style={styles.tireImg} />
         </View>
       </View>
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   },
   tireRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     width: width * 0.25,
     marginTop: 5,
   },
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   },
   primaryBtn: {
     marginTop: 25,
-    backgroundColor: '#3498db',
+    backgroundColor: '#2e7d32',
     paddingVertical: 12,
     paddingHorizontal: 40,
     borderRadius: 25,
