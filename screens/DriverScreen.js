@@ -64,17 +64,17 @@ const HomeScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       {/* Upload Documents */}
-      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('UploadPhotos')}>
+      {/* <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('UploadPhotos')}>
         <Image
           source={{ uri: 'https://img.icons8.com/color/96/document.png' }}
           style={styles.icon}
         />
         <Text style={styles.cardTitle}>Upload Documents</Text>
         <Text style={styles.cardDesc}>Upload vehicle & documents</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       {/* Transport Cost */}
-      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('TransportCost')}>
+      <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('ExtraCostUpload')}>
         <Image
           source={{ uri: 'https://img.icons8.com/color/96/money.png' }}
           style={styles.icon}
