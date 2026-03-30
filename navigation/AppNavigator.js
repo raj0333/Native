@@ -22,6 +22,7 @@ import UploadVehicleScreen from '../screens/UploadVehicleScreen';
 import VehicleDamageScreen from '../screens/VehicleDamageScreen';
 import SubmitReportScreen from '../screens/SubmitReportScreen';
 import ExtraCostUploadScreen from '../screens/ExtraCostUploadScreen';
+import LeaveRequestScreen from '../screens/LeaveRequestScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -175,6 +176,17 @@ const AppNavigator = () => {
           headerTintColor: 'white',
         }} />
         <Stack.Screen name="ExtraCostUpload" component={ExtraCostUploadScreen} options={{
+          headerShown: true,
+          headerBackTitle: 'Back',
+          headerBackTitleStyle: {
+            color: 'white',
+          },
+          headerStyle: {
+            backgroundColor: '#2e7d32',
+          },
+          headerTintColor: 'white',
+        }} />
+        <Stack.Screen name="Leave" component={LeaveRequestScreen} options={{
           headerShown: true,
           headerBackTitle: 'Back',
           headerBackTitleStyle: {
