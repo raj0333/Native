@@ -24,14 +24,16 @@ const CustomerScreen = ({ navigation }) => {
 const [searchText, setSearchText] = useState("");
 const [selectedStatus, setSelectedStatus] = useState("All");
 const [isFilterModalVisible, setIsFilterModalVisible] = useState(false);
+const [isMenuVisible, setIsMenuVisible] = useState(false);
 
-const statuses = ["All", "Pending", "In Transit", "Delivered", "Confirmed"];
+const statuses = ["All", "Pending", "In Transit", "Delivered"];
 
 const filteredOrders = orders.filter(order => {
 const matchesSearch = order.title.toLowerCase().includes(searchText.toLowerCase());
 const matchesStatus = selectedStatus === "All" || order.status === selectedStatus;
 return matchesSearch && matchesStatus;
 });
+
 const handleLogout = () => {
 Alert.alert(
 "Logout",
@@ -47,17 +49,52 @@ const handleTrackOrder = () => {
 navigation.navigate("TrackOrder");
 };
 
+const toggleMenu = () => {
+setIsMenuVisible(!isMenuVisible);
+};
+
 return (
 <View style={styles.container}>
 
+{/* Header with 3-dot menu */}
+<View style={styles.headerContainer}>
+<View style={styles.headerLeft}>
 <Image
 source={{
 uri: "https://img.freepik.com/free-vector/businessman-avatar-cartoon-character-profile_24877-18271.jpg"
 }}
 style={styles.banner}
 />
-
 <Text style={styles.title}>Welcome Customer 👋</Text>
+</View>
+<View style={styles.menuContainer}>
+<TouchableOpacity onPress={toggleMenu} style={styles.menuButton}>
+<Text style={styles.menuDots}>⋮</Text>
+</TouchableOpacity>
+{isMenuVisible && (
+<View style={styles.dropdownMenu}>
+<TouchableOpacity
+style={styles.dropdownItem}
+onPress={() => {
+setIsMenuVisible(false);
+navigation.navigate("Quote");
+}}
+>
+<Text style={styles.dropdownText}>Customer Quote</Text>
+</TouchableOpacity>
+<TouchableOpacity
+style={styles.dropdownItem}
+onPress={() => {
+setIsMenuVisible(false);
+handleLogout();
+}}
+>
+<Text style={[styles.dropdownText, styles.logoutDropdownText]}>Logout</Text>
+</TouchableOpacity>
+</View>
+)}
+</View>
+</View>
 
 {/* Filter Tabs */}
 <View style={styles.filterTabsContainer}>
@@ -127,11 +164,6 @@ style={styles.demoVehicleIcon}
 )}
 />
 
-{/* Logout Button */}
-<TouchableOpacity style={styles.logoutBtn} onPress={handleLogout}>
-<Text style={styles.logoutText}>Logout</Text>
-</TouchableOpacity>
-
 </View>
 );
 };
@@ -145,20 +177,75 @@ padding: 20,
 backgroundColor: "#f5f6fa",
 },
 
-banner: {
-width: 150,
-height: 150,
-resizeMode: "cover",
-borderRadius: 75,
+headerContainer: {
+flexDirection: "row",
+justifyContent: "space-between",
+alignItems: "center",
 marginBottom: 10,
-alignSelf: "center",
+},
+
+headerLeft: {
+flexDirection: "row",
+alignItems: "center",
+flex: 1,
+},
+
+banner: {
+width: 50,
+height: 50,
+resizeMode: "cover",
+borderRadius: 25,
+marginRight: 10,
 },
 
 title: {
+fontSize: 18,
+fontWeight: "bold",
+},
+
+menuContainer: {
+position: "relative",
+},
+
+menuButton: {
+padding: 10,
+},
+
+menuDots: {
 fontSize: 24,
 fontWeight: "bold",
-marginBottom: 10,
-textAlign: "center",
+color: "#333",
+},
+
+dropdownMenu: {
+position: "absolute",
+top: 40,
+right: 0,
+backgroundColor: "#fff",
+borderRadius: 8,
+elevation: 5,
+shadowColor: "#000",
+shadowOffset: { width: 0, height: 2 },
+shadowOpacity: 0.25,
+shadowRadius: 3.84,
+minWidth: 150,
+zIndex: 1000,
+},
+
+dropdownItem: {
+paddingVertical: 12,
+paddingHorizontal: 16,
+borderBottomWidth: 1,
+borderBottomColor: "#eee",
+},
+
+dropdownText: {
+fontSize: 16,
+color: "#333",
+},
+
+logoutDropdownText: {
+color: "#e74c3c",
 },
 
 row: {
@@ -220,21 +307,6 @@ demoVehicleIcon: {
 width: 30,
 height: 30,
 },
-
-logoutBtn: {
-backgroundColor: "#e74c3c",
-padding: 15,
-borderRadius: 8,
-marginTop: 20,
-alignItems: "center",
-},
-
-logoutText: {
-color: "#fff",
-fontWeight: "bold",
-fontSize: 16,
-},
-
 
 // Filter Tabs Styles
 filterTabsContainer: {
